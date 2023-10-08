@@ -1,5 +1,10 @@
 name: Actions Android 😎
-on: [push]
+on: 
+  workflow_dispatch: {}
+  push:
+  pull_request:
+    branches:
+      - main
 jobs:
   build:
     name: Build Project
@@ -46,6 +51,6 @@ jobs:
         env:
           BUTLER_CREDENTIALS: ${{ secrets.BUTLER_CREDENTIALS }}
           CHANNEL: android
-          ITCH_GAME: sphere
+          ITCH_GAME: kings-platform
           ITCH_USER: peryloth
           PACKAGE: build/Android
