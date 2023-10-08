@@ -51,7 +51,7 @@ jobs:
         env:
           BUTLER_CREDENTIALS: ${{ secrets.BUTLER_CREDENTIALS }}
           CHANNEL: windows
-          ITCH_GAME: sphere
+          ITCH_GAME: kings-platform
           ITCH_USER: peryloth
           PACKAGE: build
       - name: Cleanup to avoid storage limit
