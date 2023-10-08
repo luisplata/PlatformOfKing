@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6726105025928965652}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Feet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 4519763912360936863}
   - component: {fileID: 6157582378595605504}
   - component: {fileID: 4727609150157306391}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -79,8 +79,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae41aa0daa2a622489f7b898f1ad28e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inputFacade: {fileID: 0}
   movementSpeed: 5
-  jumpForce: 5
+  jumpForce: 7
   jumpTimeThreshold: 0.25
   airBrakeFactor: 0.9
   groundLayer:
@@ -168,7 +169,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3830044831994974789}
   - component: {fileID: 6429653151043454550}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
