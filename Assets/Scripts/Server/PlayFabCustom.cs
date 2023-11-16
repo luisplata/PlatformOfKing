@@ -89,6 +89,12 @@ public class PlayFabCustom : IPlayFabCustom
                 }
             },OnLoginFailure);
         }
+
+        public void AddCoins(int coinValue)
+        {
+            // adding currency into server
+            Debug.Log($"AddCoins {coinValue}");
+        }
 }
 
 [Serializable]
