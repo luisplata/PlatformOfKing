@@ -5,10 +5,10 @@ using UnityEngine;
 public class LocalStorageExternal : MonoBehaviour
 {
     [DllImport("__Internal")]
-    private static extern void SetLocalStorageValue(string key, string value);
+    public static extern void SetLocalStorageValue(string key, string value);
 
     [DllImport("__Internal")]
-    private static extern string GetLocalStorageValue(string str);
+    public static extern string GetLocalStorageValue(string str);
     
     public static string GenerateUniqueID()
     {
