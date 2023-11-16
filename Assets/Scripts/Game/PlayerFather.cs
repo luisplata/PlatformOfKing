@@ -9,6 +9,8 @@ public abstract class PlayerFather : MonoBehaviour
         get => inputFacade;
         set => inputFacade = value;
     }
+    
+    public string NameOfPlayer => nameOfPlayer;
 
     [SerializeField] protected Rigidbody2D rb;
     [SerializeField] private Collider2D playerCollider;
@@ -18,6 +20,7 @@ public abstract class PlayerFather : MonoBehaviour
     [SerializeField] private float jumpTimeThreshold = 0.25f;
     [SerializeField] private float airBrakeFactor = 0.9f; 
     [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private string nameOfPlayer;
 
     private Transform feet;
     private float jumpTime;
@@ -123,9 +126,9 @@ public abstract class PlayerFather : MonoBehaviour
         CustomUpdate();
     }
 
-    protected void ActionEventFromInput()
+    private void ActionEventFromInput()
     {
-        _secretZone.ShowSecretZone();
+        _secretZone.ShowSecretZone(this);
     }
 
     protected virtual void CustomUpdate(){}

@@ -3,9 +3,13 @@
 internal class SecretZone: MonoBehaviour
 {
     [SerializeField] private SecretZoneHide secretZoneHide;
+    [SerializeField] private string tagPlayer;
     
-    public void ShowSecretZone()
+    public void ShowSecretZone(PlayerFather playerIncoming)
     {
-        secretZoneHide.gameObject.SetActive(true);
+        if(playerIncoming.NameOfPlayer == tagPlayer)
+        {
+            secretZoneHide.gameObject.SetActive(true);
+        }
     }
 }
