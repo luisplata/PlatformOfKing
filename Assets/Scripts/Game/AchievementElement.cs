@@ -16,4 +16,6 @@ public class AchievementElement : ScriptableObject
     {
         return text;
     }
+    
+    public string Id => id;
 }

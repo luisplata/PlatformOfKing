@@ -1,7 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 public interface IAchievementSystem
 {
     void AchievementUnlocked(AchievementElement achievementElement);
-    List<AchievementElement> GetAchievements();
+    void GetAchievements(Action<List<AchievementElementData>> callback);
 }

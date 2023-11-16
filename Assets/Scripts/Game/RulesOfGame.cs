@@ -15,5 +15,6 @@ public class RulesOfGame : MonoBehaviour
         _player = factoryOfPlayers.CreatePlayer(selectedCharacterIndex);
         cinemachineVirtualCamera.Follow = _player.transform;
         cinemachineVirtualCamera.LookAt = _player.transform;
+        ServiceLocator.Instance.GetService<ICoinUiSystem>().ShowCoins();
     }
 }
