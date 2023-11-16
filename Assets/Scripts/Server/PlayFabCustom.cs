@@ -35,8 +35,23 @@ public class PlayFabCustom : IPlayFabCustom
             */
             PlayFabSettings.staticSettings.TitleId = "42";
         }
-        Debug.Log($"SystemInfo.deviceUniqueIdentifier {SystemInfo.deviceUniqueIdentifier}");
-        var request = new LoginWithCustomIDRequest { CustomId = SystemInfo.deviceUniqueIdentifier, CreateAccount = true};
+        string iduniq;
+#if UNITY_WEBGL && !UNITY_EDITOR
+        var lastId = LocalStorageExternal.GetLocalStorageValue("iduniq");
+        if (!string.IsNullOrEmpty(lastId))
+        {
+            iduniq = lastId;
+        }
+        else
+        {
+            iduniq = LocalStorageExternal.GenerateUniqueID();
+            LocalStorageExternal.SetLocalStorageValue("iduniq", iduniq);
+        }
+#else
+        iduniq = SystemInfo.deviceUniqueIdentifier;
+#endif
+        Debug.Log($"SystemInfo.deviceUniqueIdentifier {iduniq}");
+        var request = new LoginWithCustomIDRequest { CustomId = iduniq, CreateAccount = true};
         PlayFabClientAPI.LoginWithCustomID(request, resultCallback, errorCallback);
     }
 
