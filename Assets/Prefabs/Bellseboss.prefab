@@ -40,9 +40,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2838306765521292721}
+  - component: {fileID: 6183522919078782317}
   - component: {fileID: 6157582378595605504}
   - component: {fileID: 4727609150157306391}
-  - component: {fileID: 6183522919078782317}
   m_Layer: 11
   m_Name: Bellseboss
   m_TagString: Untagged
@@ -67,6 +67,28 @@ Transform:
   - {fileID: 3830044831994974789}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6183522919078782317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2517725669681346483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 838e1292a0b446638f5598f91682d926, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 6157582378595605504}
+  playerCollider: {fileID: 4727609150157306391}
+  inputFacade: {fileID: 0}
+  movementSpeed: 5
+  jumpForce: 7
+  jumpTimeThreshold: 0.25
+  airBrakeFactor: 0.9
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!50 &6157582378595605504
 Rigidbody2D:
   serializedVersion: 4
@@ -139,26 +161,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.4, y: 1}
   m_EdgeRadius: 0
---- !u!114 &6183522919078782317
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2517725669681346483}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 838e1292a0b446638f5598f91682d926, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inputFacade: {fileID: 0}
-  movementSpeed: 5
-  jumpForce: 7
-  jumpTimeThreshold: 0.25
-  airBrakeFactor: 0.9
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 1024
 --- !u!1 &6978809199433472907
 GameObject:
   m_ObjectHideFlags: 0

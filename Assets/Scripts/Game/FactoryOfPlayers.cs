@@ -9,7 +9,7 @@ public class FactoryOfPlayers : MonoBehaviour
     public GameObject CreatePlayer(int selectedCharacterIndex)
     {
         var player = Instantiate(playerPrefab[selectedCharacterIndex]);
-        player.GetComponent<PlayerFather>().inputFacade = inputFacade;
+        player.GetComponent<PlayerFather>().InputFacade = inputFacade;
         return player;
     }
 }

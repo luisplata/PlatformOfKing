@@ -1,20 +1,29 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 
 public abstract class PlayerFather : MonoBehaviour
 {
-    public InputFacade inputFacade;
-    public float movementSpeed = 5f;
-    public float jumpForce = 8f;
-    public float jumpTimeThreshold = 0.25f;
-    public float airBrakeFactor = 0.9f; 
-    public LayerMask groundLayer;
+    public InputFacade InputFacade
+    {
+        get => inputFacade;
+        set => inputFacade = value;
+    }
 
-    protected Rigidbody2D rb;
-    private Collider2D playerCollider;
+    [SerializeField] protected Rigidbody2D rb;
+    [SerializeField] private Collider2D playerCollider;
+    [SerializeField] private InputFacade inputFacade;
+    [SerializeField] private float movementSpeed = 5f;
+    [SerializeField] private float jumpForce = 8f;
+    [SerializeField] private float jumpTimeThreshold = 0.25f;
+    [SerializeField] private float airBrakeFactor = 0.9f; 
+    [SerializeField] private LayerMask groundLayer;
+
     private Transform feet;
     private float jumpTime;
     private bool inAir;
+    private bool _isSecretZone;
+    private SecretZone _secretZone;
     
     private bool isJumping = false;
 
@@ -25,8 +34,6 @@ public abstract class PlayerFather : MonoBehaviour
             //Game Over
             RestartGame();
         }
-        
-        
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -34,6 +41,20 @@ public abstract class PlayerFather : MonoBehaviour
         if (other.gameObject.CompareTag("Goal"))
         {
             StartCoroutine(CorroutineToRestartGame());
+        }
+        if(other.gameObject.layer == LayerMask.NameToLayer("Secrets"))
+        {
+            _isSecretZone = true;
+            _secretZone = other.gameObject.GetComponent<SecretZone>();
+        }
+    }
+    
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if(other.gameObject.layer == LayerMask.NameToLayer("Secrets"))
+        {
+            _isSecretZone = false;
+            _secretZone = null;
         }
     }
 
@@ -47,13 +68,16 @@ public abstract class PlayerFather : MonoBehaviour
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene(0);
     }
-    
 
-    void Start()
+    private void Reset()
     {
         rb = GetComponent<Rigidbody2D>();
         playerCollider = GetComponent<Collider2D>();
-        feet = transform.Find("Feet"); // Ajusta el nombre según la jerarquía de tu personaje
+    }
+
+    void Start()
+    {
+        feet = transform.Find("Feet");
     }
 
     void Update()
@@ -90,8 +114,18 @@ public abstract class PlayerFather : MonoBehaviour
         {
             inAir = true;
         }
+        
+        if(_isSecretZone && inputFacade.ActionButton)
+        {
+            ActionEventFromInput();
+        }
 
         CustomUpdate();
+    }
+
+    protected void ActionEventFromInput()
+    {
+        _secretZone.ShowSecretZone();
     }
 
     protected virtual void CustomUpdate(){}

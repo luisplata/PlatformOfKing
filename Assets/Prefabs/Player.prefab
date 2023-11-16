@@ -79,6 +79,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae41aa0daa2a622489f7b898f1ad28e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb: {fileID: 6157582378595605504}
+  playerCollider: {fileID: 4727609150157306391}
   inputFacade: {fileID: 0}
   movementSpeed: 5
   jumpForce: 7
