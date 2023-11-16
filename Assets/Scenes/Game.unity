@@ -4476,6 +4476,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 98211563654428989, guid: 59a4e0410215ef44f828a75bf3f5c9fa, type: 3}
+      propertyPath: playerId
+      value: 
+      objectReference: {fileID: 11400000, guid: 783f4319f782f6a498e7f08ee043267f, type: 2}
+    - target: {fileID: 98211563654428989, guid: 59a4e0410215ef44f828a75bf3f5c9fa, type: 3}
       propertyPath: achievementElement
       value: 
       objectReference: {fileID: 11400000, guid: 5368d355406e5224fa23d6d87f5aea75, type: 2}
@@ -4896,6 +4900,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 98211563654428989, guid: 59a4e0410215ef44f828a75bf3f5c9fa, type: 3}
+      propertyPath: playerId
+      value: 
+      objectReference: {fileID: 11400000, guid: 783f4319f782f6a498e7f08ee043267f, type: 2}
     - target: {fileID: 98211563654428989, guid: 59a4e0410215ef44f828a75bf3f5c9fa, type: 3}
       propertyPath: achievementElement
       value: 
@@ -5901,7 +5909,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   secretZoneHide: {fileID: 1117462291}
-  tagPlayer: BellsebossPlayer
+  tagPlayer: {fileID: 11400000, guid: 783f4319f782f6a498e7f08ee043267f, type: 2}
 --- !u!1 &2027109877
 GameObject:
   m_ObjectHideFlags: 0
@@ -15846,6 +15854,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 98211563654428989, guid: 59a4e0410215ef44f828a75bf3f5c9fa, type: 3}
+      propertyPath: playerId
+      value: 
+      objectReference: {fileID: 11400000, guid: 783f4319f782f6a498e7f08ee043267f, type: 2}
     - target: {fileID: 98211563654428989, guid: 59a4e0410215ef44f828a75bf3f5c9fa, type: 3}
       propertyPath: achievementElement
       value: 

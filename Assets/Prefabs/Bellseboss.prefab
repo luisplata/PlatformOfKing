@@ -89,7 +89,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 1024
-  nameOfPlayer: BellsebossPlayer
+  playerId: {fileID: 11400000, guid: 783f4319f782f6a498e7f08ee043267f, type: 2}
 --- !u!50 &6157582378595605504
 Rigidbody2D:
   serializedVersion: 4

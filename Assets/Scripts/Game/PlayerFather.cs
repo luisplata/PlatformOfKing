@@ -6,11 +6,9 @@ public abstract class PlayerFather : MonoBehaviour
 {
     public InputFacade InputFacade
     {
-        get => inputFacade;
         set => inputFacade = value;
     }
-    
-    public string NameOfPlayer => nameOfPlayer;
+    public PlayerId PlayerId => playerId;
 
     [SerializeField] protected Rigidbody2D rb;
     [SerializeField] private Collider2D playerCollider;
@@ -20,7 +18,7 @@ public abstract class PlayerFather : MonoBehaviour
     [SerializeField] private float jumpTimeThreshold = 0.25f;
     [SerializeField] private float airBrakeFactor = 0.9f; 
     [SerializeField] private LayerMask groundLayer;
-    [SerializeField] private string nameOfPlayer;
+    [SerializeField] private PlayerId playerId;
 
     private Transform feet;
     private float jumpTime;

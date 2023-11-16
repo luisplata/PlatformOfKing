@@ -89,7 +89,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 1024
-  nameOfPlayer: Default
+  playerId: {fileID: 11400000, guid: 7371036f684ce8c4c9d9e8dd3ed72ddd, type: 2}
 --- !u!50 &6157582378595605504
 Rigidbody2D:
   serializedVersion: 4
