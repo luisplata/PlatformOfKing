@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class PlayFabSystem : MonoBehaviour, IPlayFabSystem
 {
+    [SerializeField] private string currentId;
     private PlayFabCustom _playFabCustom;
     private void Start()
     {
@@ -11,7 +12,7 @@ public class PlayFabSystem : MonoBehaviour, IPlayFabSystem
             Destroy(gameObject);
             return;
         }
-        _playFabCustom = new PlayFabCustom();
+        _playFabCustom = new PlayFabCustom(this, currentId);
         ServiceLocator.Instance.RegisterService<IPlayFabSystem>(this);
         DontDestroyOnLoad(gameObject);
     }

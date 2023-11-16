@@ -171,6 +171,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6580913885659994401, guid: b94f9e9b9842efb459f77627106c1bbc, type: 3}
+      propertyPath: currentId
+      value: OO
+      objectReference: {fileID: 0}
     - target: {fileID: 9199749370208833652, guid: b94f9e9b9842efb459f77627106c1bbc, type: 3}
       propertyPath: m_Name
       value: PlayFabSystem
@@ -4551,7 +4555,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1390526043205727721, guid: 1ffad8dfe6205224b80625575dc6bfa4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 50.951
+      value: 56.19
       objectReference: {fileID: 0}
     - target: {fileID: 1390526043205727721, guid: 1ffad8dfe6205224b80625575dc6bfa4, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4837,7 +4841,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1390526043205727721, guid: 1ffad8dfe6205224b80625575dc6bfa4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 40.69
+      value: 47.13
       objectReference: {fileID: 0}
     - target: {fileID: 1390526043205727721, guid: 1ffad8dfe6205224b80625575dc6bfa4, type: 3}
       propertyPath: m_LocalPosition.y
