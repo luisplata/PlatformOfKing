@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 //set order of execution
@@ -40,6 +41,15 @@ public class PlayFabSystem : MonoBehaviour, IPlayFabSystem
 
     public void GetAchievements(Action<List<AchievementElementData>> callback)
     {
+        StartWentAvailable(callback).WrapErrors();
+    }
+
+    private async Task StartWentAvailable(Action<List<AchievementElementData>> callback)
+    {
+        while (!IsAvailable())
+        {
+            await Task.Delay(100);
+        }
         _playFabCustom.GetAchievements(callback);
     }
 
