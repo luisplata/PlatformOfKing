@@ -64,11 +64,13 @@ public class PlayFabCustom : IPlayFabCustom
         PlayFabClientAPI.GetTitleData(request, (defaultData) =>
         {
             var initialUserData = JsonUtility.FromJson<InitialUserData>(defaultData.Data["InitialUserData"]);
-            string nameDevice;
+            string nameDevice, processor;
 #if UNITY_WEBGL && !UNITY_EDITOR
             nameDevice = "WebGL";
+            processor = "WebGL";
 #else
             nameDevice = SystemInfo.deviceName;
+            processor = SystemInfo.processorType;
 #endif
             PlayFabClientAPI.UpdateUserData(new UpdateUserDataRequest
             {
@@ -80,7 +82,7 @@ public class PlayFabCustom : IPlayFabCustom
                         model = SystemInfo.deviceModel,
                         name = nameDevice,
                         os = SystemInfo.operatingSystem,
-                        processor = SystemInfo.processorType,
+                        processor = processor,
                         graphicsDeviceName = SystemInfo.graphicsDeviceName
                     })},
                     {"AchievementUnlocked","{}"}
