@@ -36,8 +36,10 @@ public class PlayFabCustom : IPlayFabCustom
             PlayFabSettings.staticSettings.TitleId = "42";
         }
         string iduniq;
+        
+        
 #if UNITY_WEBGL && !UNITY_EDITOR
-        var lastId = LocalStorageExternal.GetLocalStorageValue("iduniq");
+        var lastId = PlayerPrefs.GetString("iduniq");
         if (!string.IsNullOrEmpty(lastId))
         {
             iduniq = lastId;
@@ -45,7 +47,7 @@ public class PlayFabCustom : IPlayFabCustom
         else
         {
             iduniq = LocalStorageExternal.GenerateUniqueID();
-            LocalStorageExternal.SetLocalStorageValue("iduniq", iduniq);
+            PlayerPrefs.SetString("iduniq", iduniq);
         }
 #else
         iduniq = SystemInfo.deviceUniqueIdentifier;
