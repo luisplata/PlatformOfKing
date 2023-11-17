@@ -64,6 +64,12 @@ public class PlayFabCustom : IPlayFabCustom
         PlayFabClientAPI.GetTitleData(request, (defaultData) =>
         {
             var initialUserData = JsonUtility.FromJson<InitialUserData>(defaultData.Data["InitialUserData"]);
+            string nameDevice;
+#if UNITY_WEBGL && !UNITY_EDITOR
+            nameDevice = "WebGL";
+#else
+            nameDevice = SystemInfo.deviceName;
+#endif
             PlayFabClientAPI.UpdateUserData(new UpdateUserDataRequest
             {
                 Data = new Dictionary<string, string>()
@@ -72,7 +78,7 @@ public class PlayFabCustom : IPlayFabCustom
                     {"SystemInfo",JsonUtility.ToJson(new SystemInfoCustom
                     {
                         model = SystemInfo.deviceModel,
-                        name = SystemInfo.deviceName,
+                        name = nameDevice,
                         os = SystemInfo.operatingSystem,
                         processor = SystemInfo.processorType,
                         graphicsDeviceName = SystemInfo.graphicsDeviceName
