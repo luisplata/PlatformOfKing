@@ -39,22 +39,28 @@ public class PlayFabCustom : IPlayFabCustom
         
         
 #if UNITY_WEBGL && !UNITY_EDITOR
-        var lastId = PlayerPrefs.GetString("iduniq");
-        if (!string.IsNullOrEmpty(lastId))
-        {
-            iduniq = lastId;
-        }
-        else
-        {
-            iduniq = LocalStorageExternal.GenerateUniqueID();
-            PlayerPrefs.SetString("iduniq", iduniq);
-        }
+        iduniq = GetLocalStorageValue();
 #else
         iduniq = SystemInfo.deviceUniqueIdentifier;
 #endif
         Debug.Log($"SystemInfo.deviceUniqueIdentifier {iduniq}");
         var request = new LoginWithCustomIDRequest { CustomId = iduniq, CreateAccount = true};
         PlayFabClientAPI.LoginWithCustomID(request, resultCallback, errorCallback);
+    }
+
+    private string GetLocalStorageValue()
+    {
+        var lastId = PlayerPrefs.GetString("iduniq");
+        if (!string.IsNullOrEmpty(lastId))
+        {
+            return lastId;
+        }
+        else
+        {
+            var iduniq = LocalStorageExternal.GenerateUniqueID();
+            PlayerPrefs.SetString("iduniq", iduniq);
+            return iduniq;
+        }
     }
 
     private void CreatedPlayer()
