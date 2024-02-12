@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d0199c11aa6f514784c5c69cd8378d8, type: 3}
   m_Name: PlayFabEditorPrefsSO
   m_EditorClassIdentifier: 
-  DevAccountEmail: www.luisplata@gmail.com
-  DevAccountToken: 8z4jinp48f9bej8z5snqy5j7fcedibbqi765fumi8amyjxtcdecxis5cta5mihkhq39abhsc8uksybuu84au4dacr1o6953zgdskjgc85chso9qffgkebfmmpz3pf7mokzjxti6xouyaa9fdhfagt59igm1fom7duyb7no6jx1ou5d8ge6jcmwjm3hefx44xnm96dzzs
+  DevAccountEmail: 
+  DevAccountToken: 
   AadAuthorization: 
-  SelectedStudio: King Game
-  SdkPath: Assets/PlayFabSDK
+  SelectedStudio: 
+  SdkPath: 
   EdExPath: 
   LocalCloudScriptPath: 
   PanelIsShown: 0
-  curMainMenuIdx: 1
+  curMainMenuIdx: 0
   curSubMenuIdx: 0

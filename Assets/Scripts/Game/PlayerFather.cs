@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine;
 
-public abstract class PlayerFather : MonoBehaviour
+public abstract class PlayerFather : MonoBehaviour, IFloorController
 {
     public InputFacade InputFacade
     {
@@ -19,6 +19,7 @@ public abstract class PlayerFather : MonoBehaviour
     [SerializeField] private float airBrakeFactor = 0.9f; 
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private PlayerId playerId;
+    [SerializeField] private JumpSystem jumpSystem;
 
     private Transform feet;
     private float jumpTime;
@@ -79,6 +80,7 @@ public abstract class PlayerFather : MonoBehaviour
     void Start()
     {
         feet = transform.Find("Feet");
+        jumpSystem.Configure(rb, this);
     }
 
     void Update()
@@ -94,21 +96,6 @@ public abstract class PlayerFather : MonoBehaviour
         if (inputFacade.JumpButton && onGround)
         {
             Jump();
-        }
-
-        if (Input.GetButton("Jump"))
-        {
-            isJumping = true;
-            jumpTime += Time.deltaTime;
-        }
-        else
-        {
-            isJumping = false;
-        }
-
-        if (inputFacade.JumpButton)
-        {
-            jumpTime = 0f;
         }
 
         if (!onGround)
@@ -146,7 +133,18 @@ public abstract class PlayerFather : MonoBehaviour
     protected virtual void Move()
     {
         float horizontalMovement = inputFacade.HorizontalAxis;
-
+        Vector2 movement = new Vector2(horizontalMovement, 0);
+        var velocity = rb.velocity;
+        if (movement.x != 0f)
+        {
+            velocity = new Vector2(movement.x * movementSpeed, rb.velocity.y);
+        }
+        else if (onGround)
+        {
+            velocity = new Vector2(velocity.x * airBrakeFactor, velocity.y);
+        }
+        rb.velocity = velocity;
+        /*
         if (onGround || (jumpTime <= jumpTimeThreshold) || isJumping)
         {
             Vector2 movement = new Vector2(horizontalMovement, 0);
@@ -173,11 +171,18 @@ public abstract class PlayerFather : MonoBehaviour
         {
             rb.gravityScale = 1f;
         }
+        */
     }
 
     void Jump()
     {
-        rb.velocity = new Vector2(rb.velocity.x, 0);
-        rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+        jumpSystem.Jump();
+        //rb.velocity = new Vector2(rb.velocity.x, 0);
+        //rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+    }
+
+    public bool IsTouchingFloor()
+    {
+        return onGround;
     }
 }

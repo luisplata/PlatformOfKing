@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 6183522919078782317}
   - component: {fileID: 6157582378595605504}
   - component: {fileID: 4727609150157306391}
+  - component: {fileID: -1740913765784770978}
   m_Layer: 11
   m_Name: Bellseboss
   m_TagString: Player
@@ -90,6 +91,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   playerId: {fileID: 11400000, guid: 783f4319f782f6a498e7f08ee043267f, type: 2}
+  jumpSystem: {fileID: -1740913765784770978}
 --- !u!50 &6157582378595605504
 Rigidbody2D:
   serializedVersion: 4
@@ -162,6 +164,26 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.4, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &-1740913765784770978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2517725669681346483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8497fa291f860741bdf9a7852e43120, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToAttack: 0.5
+  timeToDecreasing: 0.1
+  timeToSustain: 0
+  timeToRelease: 0.1
+  maxHeighJump: 7
+  heightDecreasing: 1
+  forceToAttack: 1
+  forceToDecreasing: 1
 --- !u!1 &6978809199433472907
 GameObject:
   m_ObjectHideFlags: 0
