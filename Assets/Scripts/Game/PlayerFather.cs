@@ -20,6 +20,7 @@ public abstract class PlayerFather : MonoBehaviour, IFloorController
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private PlayerId playerId;
     [SerializeField] private JumpSystem jumpSystem;
+    [SerializeField] private Animator animator;
 
     private Transform feet;
     private float jumpTime;
@@ -81,6 +82,23 @@ public abstract class PlayerFather : MonoBehaviour, IFloorController
     {
         feet = transform.Find("Feet");
         jumpSystem.Configure(rb, this);
+        
+        jumpSystem.OnAttack += () =>
+        {
+            animator.SetTrigger("j");
+        };
+        jumpSystem.OnMidAir += () =>
+        {
+            animator.SetTrigger("j_middle");
+        };
+        jumpSystem.OnRelease += () =>
+        {
+            animator.SetTrigger("j_fall");
+        };
+        jumpSystem.OnEndJump += () =>
+        {
+            animator.SetTrigger("j_recovery");
+        };
     }
 
     void Update()
@@ -100,7 +118,11 @@ public abstract class PlayerFather : MonoBehaviour, IFloorController
 
         if (!onGround)
         {
-            inAir = true;
+            if (!inAir)
+            {
+                inAir = true;
+                jumpSystem.Fall();
+            }
         }
         
         if(_isSecretZone && inputFacade.ActionButton)
@@ -144,6 +166,7 @@ public abstract class PlayerFather : MonoBehaviour, IFloorController
             velocity = new Vector2(velocity.x * airBrakeFactor, velocity.y);
         }
         rb.velocity = velocity;
+        animator.SetFloat("x", Mathf.Abs(velocity.x));
         /*
         if (onGround || (jumpTime <= jumpTimeThreshold) || isJumping)
         {
